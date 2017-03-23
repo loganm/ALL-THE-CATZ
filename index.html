@@ -1,0 +1,38 @@
+<html>
+<body id='cats-here-plz'>
+</body>
+<script>
+var soManyCatz = 0;
+var tooManyCatz = 100;
+
+function canHazMoarCatz() {
+
+	var horizontalSpaceForCats = window.innerWidth
+	|| document.documentElement.clientWidth
+	|| document.body.clientWidth;
+
+	var verticalSpaceForCats = window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+
+	var randomHorizontalPositionOfNewCat = Math.floor(Math.random() * horizontalSpaceForCats);
+
+	var randomVerticalPositionOfNewCat = Math.floor(Math.random() * verticalSpaceForCats);
+
+	var kingdomOfCats = 'http://thecatapi.com/api/images/get?format=src&type=gif&uniq=' + soManyCatz;
+
+	var catnappedCat = document.createElement( "img" );
+	catnappedCat.src = kingdomOfCats;
+	catnappedCat.style = 'position:absolute; TOP:' + randomVerticalPositionOfNewCat + 'px; LEFT:' + randomHorizontalPositionOfNewCat + 'px;';
+
+	document.getElementById( "cats-here-plz" ).appendChild( catnappedCat );
+
+	if (soManyCatz < tooManyCatz) {
+		setTimeout(canHazMoarCatz, 500);
+		soManyCatz++;
+	}
+}
+
+canHazMoarCatz()
+</script>
+</html>
